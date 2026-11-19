@@ -94,18 +94,32 @@ def build_features(df: pd.DataFrame) -> pd.DataFrame:
     Rows outside :data:`PRICE_RANGE_EUR` are removed.
     """
     out = df.copy()
-
-    fx = out["city"].map(CURRENCY).map(FX_TO_EUR)
-    if fx.isna().any():
-        unknown = sorted(out.loc[fx.isna(), "city"].unique())
-        raise ValueError(f"no currency configured for cities: {unknown}")
-    for col in MONEY_COLUMNS:
-        out[col] = pd.to_numeric(out[col], errors="coerce") * fx
-    out = out.rename(columns={"price": "price_eur"})
-
+    out["price_eur"] = pd.to_numeric(out.pop("price"), errors="coerce") * fx_to_eur(out["city"])
     lo, hi = PRICE_RANGE_EUR
     out = out[out["price_eur"].between(lo, hi)].copy()
     out[TARGET] = np.log(out["price_eur"])
+    return encode_features(out).reset_index(drop=True)
+
+
+def fx_to_eur(city: pd.Series) -> pd.Series:
+    """Exchange rate to EUR for each row's city."""
+    fx = city.map(CURRENCY).map(FX_TO_EUR)
+    if fx.isna().any():
+        unknown = sorted(city[fx.isna()].unique())
+        raise ValueError(f"no currency configured for cities: {unknown}")
+    return fx
+
+
+def encode_features(df: pd.DataFrame) -> pd.DataFrame:
+    """Type and encode the feature columns; needs no price, so it also serves new listings.
+
+    Fee columns are expected in the city's local currency and are converted to EUR.
+    """
+    out = df.copy()
+    fx = fx_to_eur(out["city"])
+    for col in MONEY_COLUMNS:
+        if col != "price" and col in out:
+            out[col] = pd.to_numeric(out[col], errors="coerce") * fx
 
     for col in AMENITY_FLAGS:
         out[col] = out[col].fillna(0).astype("int8")
@@ -121,7 +135,7 @@ def build_features(df: pd.DataFrame) -> pd.DataFrame:
     for col in NUMERIC_COLUMNS:
         out[col] = pd.to_numeric(out[col], errors="coerce").astype("float64")
 
-    return out.reset_index(drop=True)
+    return out
 
 
 def feature_columns() -> list[str]:

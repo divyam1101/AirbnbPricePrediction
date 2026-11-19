@@ -53,6 +53,14 @@ def test_types_and_encodings():
     assert set(F.feature_columns()) <= set(out.columns)
 
 
+def test_encode_features_works_without_a_price():
+    rows = cleaned_rows("london", [100, 200]).drop(columns="price")
+    out = F.encode_features(rows)
+    assert out["cleaning_fee"].iloc[0] == pytest.approx(11.2)  # 10 GBP -> EUR
+    assert set(F.feature_columns()) <= set(out.columns)
+    assert F.TARGET not in out.columns
+
+
 def test_unknown_city_currency_raises():
     with pytest.raises(ValueError):
         F.build_features(cleaned_rows("rome", [50, 60]))

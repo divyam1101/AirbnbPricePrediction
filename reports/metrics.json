@@ -1,0 +1,274 @@
+{
+  "n_listings": 191742,
+  "price_range_eur": [
+    10.0,
+    1000.0
+  ],
+  "fx_to_eur": {
+    "EUR": 1.0,
+    "GBP": 1.12
+  },
+  "best_model": "XGBoost",
+  "holdout": [
+    {
+      "model": "Ridge (baseline)",
+      "split": "train",
+      "r2_log": 0.5538338855731126,
+      "rmse_log": 0.4556245804244035,
+      "mae_eur": 43.398833135218304,
+      "median_ape": 0.2727264599088377,
+      "n": 86855
+    },
+    {
+      "model": "Ridge (baseline)",
+      "split": "test (AMS/BER/PAR)",
+      "r2_log": 0.5242610876166462,
+      "rmse_log": 0.4711621707611006,
+      "mae_eur": 42.33471781261358,
+      "median_ape": 0.27289830502868717,
+      "n": 21714
+    },
+    {
+      "model": "Ridge (baseline)",
+      "split": "unseen city (London)",
+      "r2_log": 0.5934440258665026,
+      "rmse_log": 0.4758912598752655,
+      "mae_eur": 50.43277440892356,
+      "median_ape": 0.2767445608109391,
+      "n": 83173
+    },
+    {
+      "model": "HistGradientBoosting",
+      "split": "train",
+      "r2_log": 0.8166692048341274,
+      "rmse_log": 0.29206301566743054,
+      "mae_eur": 23.795823264603452,
+      "median_ape": 0.16865365412828676,
+      "n": 86855
+    },
+    {
+      "model": "HistGradientBoosting",
+      "split": "test (AMS/BER/PAR)",
+      "r2_log": 0.7006143705322605,
+      "rmse_log": 0.37376751358799665,
+      "mae_eur": 31.563001825336546,
+      "median_ape": 0.22010073419320428,
+      "n": 21714
+    },
+    {
+      "model": "HistGradientBoosting",
+      "split": "unseen city (London)",
+      "r2_log": 0.6596659084910568,
+      "rmse_log": 0.4354118881868925,
+      "mae_eur": 41.00348334708882,
+      "median_ape": 0.26023987845037333,
+      "n": 83173
+    },
+    {
+      "model": "LightGBM",
+      "split": "train",
+      "r2_log": 0.7913702274595247,
+      "rmse_log": 0.3115638030807812,
+      "mae_eur": 25.917999842828173,
+      "median_ape": 0.1852628407989722,
+      "n": 86855
+    },
+    {
+      "model": "LightGBM",
+      "split": "test (AMS/BER/PAR)",
+      "r2_log": 0.7031737256807974,
+      "rmse_log": 0.37216647310878653,
+      "mae_eur": 31.460636043356836,
+      "median_ape": 0.2208902126406356,
+      "n": 21714
+    },
+    {
+      "model": "LightGBM",
+      "split": "unseen city (London)",
+      "r2_log": 0.6600149378862832,
+      "rmse_log": 0.4351885627320344,
+      "mae_eur": 40.88018339477413,
+      "median_ape": 0.2598530467867768,
+      "n": 83173
+    },
+    {
+      "model": "XGBoost",
+      "split": "train",
+      "r2_log": 0.8390465734145903,
+      "rmse_log": 0.2736585160257585,
+      "mae_eur": 21.590544321708798,
+      "median_ape": 0.1516458069739043,
+      "n": 86855
+    },
+    {
+      "model": "XGBoost",
+      "split": "test (AMS/BER/PAR)",
+      "r2_log": 0.7046990366753663,
+      "rmse_log": 0.37120900940376667,
+      "mae_eur": 31.287373920180002,
+      "median_ape": 0.22117072011103,
+      "n": 21714
+    },
+    {
+      "model": "XGBoost",
+      "split": "unseen city (London)",
+      "r2_log": 0.6560039821997956,
+      "rmse_log": 0.4377480928468174,
+      "mae_eur": 41.153544747979325,
+      "median_ape": 0.26157467298787795,
+      "n": 83173
+    }
+  ],
+  "leave_one_city_out": [
+    {
+      "model": "Ridge (baseline)",
+      "held_out_city": "amsterdam",
+      "r2_log": -0.4343360840861423,
+      "rmse_log": 0.6114514830488459,
+      "mae_eur": 68.79454604666128,
+      "median_ape": 0.3843493302305721,
+      "n": 19731
+    },
+    {
+      "model": "HistGradientBoosting",
+      "held_out_city": "amsterdam",
+      "r2_log": -0.19484390692041598,
+      "rmse_log": 0.5580744336478483,
+      "mae_eur": 63.27302679743521,
+      "median_ape": 0.3581806594529628,
+      "n": 19731
+    },
+    {
+      "model": "LightGBM",
+      "held_out_city": "amsterdam",
+      "r2_log": -0.2182292516777773,
+      "rmse_log": 0.5635092537591686,
+      "mae_eur": 63.907952528038955,
+      "median_ape": 0.3628247495678757,
+      "n": 19731
+    },
+    {
+      "model": "XGBoost",
+      "held_out_city": "amsterdam",
+      "r2_log": -0.22887409665175862,
+      "rmse_log": 0.5659658611568765,
+      "mae_eur": 64.06954204027618,
+      "median_ape": 0.36445937857245775,
+      "n": 19731
+    },
+    {
+      "model": "Ridge (baseline)",
+      "held_out_city": "berlin",
+      "r2_log": 0.1924469434856203,
+      "rmse_log": 0.5644464606752846,
+      "mae_eur": 32.95335797144929,
+      "median_ape": 0.45617606535924005,
+      "n": 24370
+    },
+    {
+      "model": "HistGradientBoosting",
+      "held_out_city": "berlin",
+      "r2_log": 0.34134775027765785,
+      "rmse_log": 0.5097594802663459,
+      "mae_eur": 28.506854058750623,
+      "median_ape": 0.3971698909163916,
+      "n": 24370
+    },
+    {
+      "model": "LightGBM",
+      "held_out_city": "berlin",
+      "r2_log": 0.3439327193505879,
+      "rmse_log": 0.5087581871562042,
+      "mae_eur": 28.476680706805208,
+      "median_ape": 0.39847580654167164,
+      "n": 24370
+    },
+    {
+      "model": "XGBoost",
+      "held_out_city": "berlin",
+      "r2_log": 0.34016052769700655,
+      "rmse_log": 0.5102186948926295,
+      "mae_eur": 28.550631101764765,
+      "median_ape": 0.3996884251464945,
+      "n": 24370
+    },
+    {
+      "model": "Ridge (baseline)",
+      "held_out_city": "paris",
+      "r2_log": 0.4597571344468415,
+      "rmse_log": 0.45936969354002694,
+      "mae_eur": 172.5136139784307,
+      "median_ape": 0.2958510301218762,
+      "n": 64468
+    },
+    {
+      "model": "HistGradientBoosting",
+      "held_out_city": "paris",
+      "r2_log": 0.5644319730706612,
+      "rmse_log": 0.4124732758395944,
+      "mae_eur": 38.967956084694116,
+      "median_ape": 0.26570939915266284,
+      "n": 64468
+    },
+    {
+      "model": "LightGBM",
+      "held_out_city": "paris",
+      "r2_log": 0.5625989567591414,
+      "rmse_log": 0.4133402775661643,
+      "mae_eur": 39.10052800108612,
+      "median_ape": 0.26541837722750816,
+      "n": 64468
+    },
+    {
+      "model": "XGBoost",
+      "held_out_city": "paris",
+      "r2_log": 0.5586959151016855,
+      "rmse_log": 0.4151803524558256,
+      "mae_eur": 39.19244884360321,
+      "median_ape": 0.26720732435502215,
+      "n": 64468
+    },
+    {
+      "model": "Ridge (baseline)",
+      "held_out_city": "london",
+      "r2_log": 0.5967440784027231,
+      "rmse_log": 0.4739558977550562,
+      "mae_eur": 50.01132710328631,
+      "median_ape": 0.276007560654105,
+      "n": 83173
+    },
+    {
+      "model": "HistGradientBoosting",
+      "held_out_city": "london",
+      "r2_log": 0.6551035888850734,
+      "rmse_log": 0.43832061092647967,
+      "mae_eur": 41.04121198720438,
+      "median_ape": 0.26087250553603425,
+      "n": 83173
+    },
+    {
+      "model": "LightGBM",
+      "held_out_city": "london",
+      "r2_log": 0.6599089301879277,
+      "rmse_log": 0.435256403569002,
+      "mae_eur": 40.619271601429475,
+      "median_ape": 0.25829247311274633,
+      "n": 83173
+    },
+    {
+      "model": "XGBoost",
+      "held_out_city": "london",
+      "r2_log": 0.6559849411368028,
+      "rmse_log": 0.4377602079197241,
+      "mae_eur": 41.0928577259441,
+      "median_ape": 0.26028732478691047,
+      "n": 83173
+    }
+  ],
+  "leave_one_city_out_mean_r2": {
+    "HistGradientBoosting": 0.3415,
+    "LightGBM": 0.3371,
+    "Ridge (baseline)": 0.2037,
+    "XGBoost": 0.3315
+  }
+}

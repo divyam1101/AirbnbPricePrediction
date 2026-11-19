@@ -11,8 +11,8 @@ trees match or beat deep tabular models at a fraction of the cost (Grinsztajn et
 
 from __future__ import annotations
 
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable
 
 import lightgbm as lgb
 import numpy as np

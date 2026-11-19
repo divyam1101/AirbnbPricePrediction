@@ -93,7 +93,8 @@ def plot_results(holdout: pd.DataFrame, loco: pd.DataFrame, ctx: dict, best: str
     # 3. predicted vs actual for the best model
     model = ctx["fitted"][best]
     fig, axes = plt.subplots(1, 2, figsize=(11, 4.5), sharex=True, sharey=True)
-    for ax, (title, frame) in zip(axes, (("Held-out listings", ctx["test"]), ("London (unseen)", ctx["unseen"]))):
+    panels = (("Held-out listings", ctx["test"]), ("London (unseen)", ctx["unseen"]))
+    for ax, (title, frame) in zip(axes, panels, strict=True):
         sample = frame.sample(min(len(frame), 5000), random_state=RANDOM_STATE)
         ax.scatter(np.exp(sample[F.TARGET]), np.exp(model.predict(sample[cols])), s=3, alpha=0.3)
         ax.plot([10, 1000], [10, 1000], "k--", lw=1)

@@ -17,7 +17,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "jupyter", "nbconvert"]
+dev = ["pytest>=8", "ruff>=0.6", "jupyter", "nbconvert"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -25,3 +25,10 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 120
+extend-exclude = ["notebooks/archive"]  # the 2021 notebooks, kept unchanged for reference
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM"]

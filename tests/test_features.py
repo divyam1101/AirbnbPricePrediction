@@ -22,7 +22,7 @@ def cleaned_rows(city: str, prices: list[float]) -> pd.DataFrame:
         "cancellation_policy": ["luxury_super_strict_95"] + ["flexible"] * (n - 1),
         "review_scores_rating": ["95-100"] * (n - 1) + [np.nan],
         **{col: ["9"] * n for col in F.TEN_POINT_REVIEWS},
-        **{col: [1.0] * n for col in F.NUMERIC_COLUMNS if col not in ("security_deposit", "cleaning_fee", "extra_people")},
+        **{col: [1.0] * n for col in F.NUMERIC_COLUMNS if col not in F.MONEY_COLUMNS},
         **{flag: [1.0] + [np.nan] * (n - 1) for flag in F.AMENITY_FLAGS},
     }
     return pd.DataFrame(data)

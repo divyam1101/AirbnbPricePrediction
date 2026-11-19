@@ -127,7 +127,8 @@ def clean_listings(raw: pd.DataFrame, snapshot_date: str) -> pd.DataFrame:
 
     df["host_response_time"] = df["host_response_time"].fillna("unknown")
     rate = pd.to_numeric(df["host_response_rate"].astype("string").str.rstrip("%"), errors="coerce")
-    df["host_response_rate"] = _bin(rate, [0, 25, 50, 75, 99, 100], ["0-24", "25-49", "50-74", "75-99", "100"], "unknown")
+    df["host_response_rate"] = _bin(rate, [0, 25, 50, 75, 99, 100],
+                                    ["0-24", "25-49", "50-74", "75-99", "100"], "unknown")
 
     df["property_type"] = df["property_type"].replace(PROPERTY_TYPE_MAP)
     df.loc[~df["property_type"].isin(["House", "Apartment", "Hotel"]), "property_type"] = "Other"
